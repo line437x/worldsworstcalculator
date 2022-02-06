@@ -49,11 +49,15 @@ function clickCalculate() {
   }
 
   console.log(result);
+  //   console.log("vis resultatet");
+
   //Vis resultat i listen
   resultRead.innerHTML = result;
 }
 
 function clickClear() {
-  console.log("ryd resultatet");
+  //   console.log("ryd resultatet");
+
+  //Ryd resulatet
   resultRead.textContent = "";
 }
