@@ -48,21 +48,12 @@ function clickCalculate() {
       break;
   }
 
-  //   if (operator.value == "add") {
-  //     result = firstValue + secondValue;
-  //   } else if (operator.value == "sub") {
-  //     result = firstValue - secondValue;
-  //   } else if (operator.value == "mul") {
-  //     result = firstValue * secondValue;
-  //   } else {
-  //     result = firstValue / secondValue;
-  //   }
   console.log(result);
-  //   console.log(operator.value);
-
-  resultRead.textContent = result;
+  //Vis resultat i listen
+  resultRead.innerHTML = result;
 }
 
 function clickClear() {
   console.log("ryd resultatet");
+  resultRead.textContent = "";
 }
