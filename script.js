@@ -1,4 +1,4 @@
-"use strict;";
+"use strict";
 
 //oprettelse af variabler
 const calculate = document.querySelector("#calculate");
@@ -14,23 +14,26 @@ let resultRead = document.querySelector("#results");
 let firstValue, secondValue, operatorChoose, result;
 
 window.addEventListener("DOMContentLoaded", setup);
+
 function setup() {
   //Gør knapper klikbarer
   calculate.addEventListener("click", clickCalculate);
   clear.addEventListener("click", clickClear);
-  console.log("hej hej");
+  // console.log("hej hej");
 }
 
 function clickCalculate() {
   //Læs første værdi/input
-  firstValue = parseInt(nr1.value);
-  console.log(firstValue);
+  firstValue = Number(nr1.value);
+  // console.log(firstValue);
+
   //Læs anden værdi/input
-  secondValue = parseInt(nr2.value);
-  console.log(secondValue);
+  secondValue = Number(nr2.value);
+  // console.log(secondValue);
 
   //Læs operator
   operatorChoose = operator.value;
+  console.log(operator.value);
 
   //Udregn resultater på baggrund af opreator-input
   switch (operatorChoose) {
@@ -48,16 +51,28 @@ function clickCalculate() {
       break;
   }
 
-  console.log(result);
-  //   console.log("vis resultatet");
+  let numberOfDecimals = document.querySelector("#decimals").value;
+  // console.log(document.querySelector("#doround").checked);
 
+  if (document.querySelector("#doround").checked) {
+    numberOfDecimals = document.querySelector("#decimals").value;
+  } else {
+    numberOfDecimals = 0;
+  }
+
+  //Erstat første input med resultat
+  document.querySelector("#firstnumber").value = result;
+
+  let appendToList = document.createElement("li");
   //Vis resultat i listen
-  resultRead.innerHTML = result;
+  appendToList.textContent = result.toFixed(numberOfDecimals);
+
+  let ulResults = document.querySelector("#results");
+  ulResults.appendChild(appendToList);
+  ulResults.scrollTop = ulResults.scrollHeight;
 }
 
 function clickClear() {
-  //   console.log("ryd resultatet");
-
   //Ryd resulatet
   resultRead.textContent = "";
 }
